@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CS360 Assignment 3</title>
+    <script type="text/javascript" src="glMatrix-0.9.5.min.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+    <style>
+      /* General Body Style */
+      body {
+        font-family: sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        color: #000;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      /* Flex Container */
+      .container {
+        display: flex;
+        width: 90%;
+        max-width: 1200px;
+        background-color: #fff;
+        border: 1px solid #000;
+        border-radius: 5px;
+      }
+
+      /* Left Side: Main Canvas */
+      .child {
+        flex: 1;
+        padding: 10px;
+      }
+
+      canvas {
+        width: 100%;
+        height: 100%;
+      }
+
+      /* Right Side: Controls and Text */
+      #right {
+        flex: 0.5;
+        padding: 20px;
+        border-left: 1px solid #000;
+        text-align: center;
+      }
+
+      h1,
+      h2,
+      h4 {
+        margin: 10px 0;
+      }
+
+      button {
+        background-color: #000;
+        color: #fff;
+        font-size: 14px;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        margin-top: 10px;
+        width: 100%;
+        max-width: 150px;
+      }
+
+      button:hover {
+        background-color: #333;
+      }
+
+      button:active {
+        background-color: #555;
+      }
+
+      /* Responsive for smaller screens */
+      @media (max-width: 768px) {
+        .container {
+          flex-direction: column;
+        }
+
+        #right {
+          padding: 10px;
+        }
+      }
+    </style>
+  </head>
+
+  <body onload="webGLStart();">
+    <div class="container">
+      <!-- Left: Canvas for WebGL -->
+      <div class="child" id="left">
+        <canvas
+          id="reflection"
+          style="border: none"
+          width="1000"
+          height="1000"
+        ></canvas>
+      </div>
+
+      <!-- Right: Controls and Information -->
+      <div class="child" id="right">
+        <h1>Assignment-3</h1>
+        <h1>Texture Mapping and Cubemap Environment Mapping</h1>
+        <h1>Chayan Kumawat - 220309</h1>
+
+        <h2>Move Around The Room</h2>
+        <button id="startAnimationButton">START</button>
+        <button id="stopButton">STOP</button>
+
+        <h2>View From Top</h2>
+        <button id="topViewButton" onclick="topView();">CLICK ME</button>
+
+        <h2>Reset To Default Position</h2>
+        <button id="resetButton" onclick="window.location.reload()">RESET</button>
+
+        
+      </div>
+    </div>
+  </body>
+</html>
