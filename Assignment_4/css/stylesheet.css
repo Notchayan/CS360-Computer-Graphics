@@ -1,0 +1,32 @@
+body {
+    margin: 0 auto;
+    font: 14px/19px 'Lucida Grande', sans-serif;
+    background-color: #f0f0f0; /* Light gray background for contrast */
+}
+
+#container {
+    position: relative;
+    display: block;
+    width: 100vw;
+    height: 100vh;
+}
+
+#canvas {
+    position: fixed;
+    display: inline-block;
+    z-index: 8; /* position this canvas at bottom of the other one */
+}
+
+#overlay {
+    position: fixed;
+    top: 3em; /* Slightly reduce the top spacing */
+    left: 3em; /* Slightly reduce the left spacing */
+    z-index: 10;
+    font-family: monospace;
+    background-color: rgba(30, 30, 30, 0.9); /* Darker background with more opacity */
+    color: #ffffff; /* White text for better contrast */
+    padding: 3em; /* Increased padding for larger size */
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+    overflow: hidden;
+}
