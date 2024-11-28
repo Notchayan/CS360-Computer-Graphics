@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3D rendering and shading</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="glMatrix-0.9.5.min.js"></script>
+    <script src="script.js"></script>
+    <style>
+      body {
+        margin: 0;
+        font-family: 'Roboto', sans-serif;
+        background: linear-gradient(to bottom right, #f0f4f7, #d6e0f0);
+        color: #333;
+      }
+
+      h1 {
+        text-align: center;
+        font-size: 3rem;
+        margin-top: 40px;
+        color: #1a73e8;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+        color: #444;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      canvas {
+        border-radius: 15px;
+        box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.2);
+        margin-top: 20px;
+      }
+
+      .viewports {
+        display: flex;
+        justify-content: space-around;
+        width: 90%;
+        margin: 40px 0;
+        max-width: 1200px;
+      }
+
+      .sliders {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin-top: 20px;
+      }
+
+      .slider-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: white;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        width: 350px;
+      }
+
+      .slider {
+        width: 80%;
+        margin: 10px 0;
+        -webkit-appearance: none;
+        height: 10px;
+        border-radius: 5px;
+        background: #d3d3d3;
+        outline: none;
+      }
+
+      .slider:hover {
+        background: #aaa;
+      }
+
+      .slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: #1a73e8;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+
+      .slider::-webkit-slider-thumb:hover {
+        background: #0f5ab5;
+      }
+
+      .button {
+        background-color: #1a73e8;
+        color: white;
+        border: none;
+        border-radius: 50px;
+        padding: 12px 30px;
+        font-size: 1rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 20px;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+        outline: none;
+      }
+
+      .button:hover {
+        background-color: #155bb5;
+        box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .button:active {
+        transform: scale(0.98);
+      }
+    </style>
+  </head>
+
+  <body onload="webGLStart();">
+    <div class="container">
+      <h1>3D rendering and shading</h1>
+      <canvas id="assn2" width="1200" height="400"></canvas>
+
+      <div class="viewports">
+        <h2 id="flat">Per-Face Shading</h2>
+        <h2 id="vertex">Gouraud Shading <br>(Per-Vertex)</br></h2>
+        <h2 id="frag">Phong Shading <br>(Per-Fragment)</br></h2>
+      </div>
+
+      <div class="sliders">
+        <div class="slider-container">
+          <b>Control Light Position:</b>
+          <input
+            type="range"
+            class="slider"
+            id="light-slider"
+            min="-15.0"
+            max="15.0"
+            step="1.0"
+            value="3.0"
+          />
+        </div>
+        <div class="slider-container">
+          <b>Control Camera Zoom:</b>
+          <input
+            type="range"
+            class="slider"
+            id="camera-slider"
+            min="0.0"
+            max="15.0"
+            step="1.0"
+            value="2.0"
+          />
+        </div>
+      </div>
+
+      <button class="button" onClick="window.location.reload();">Reset</button>
+    </div>
+  </body>
+</html>
